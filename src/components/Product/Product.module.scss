@@ -8,14 +8,20 @@
 
     .image{
         width: 100%;
-        height: 200px;
+        height: 220px;
     }
 
     .container{
         padding: 1rem;
         font-family: 'Roboto', sans-serif;
 
+        .name{
+            text-align: center;
+            text-transform: capitalize;
+        }
+
         .description{
+            height: 40px;
             text-align: left;
         }
     

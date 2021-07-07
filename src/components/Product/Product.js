@@ -1,19 +1,23 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../../reducers/productSlice"
 import styles from "./Product.module.scss";
 
-export function Product() {
+export function Product(props) {
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.productCard}>
       <img
         className={styles.image}
-        src="https://www.pngitem.com/pimgs/m/128-1288044_bananas-transparent-cliparts-banana-png-png-download.png"
-        alt="banana"
+        src={props.image}
+        alt="product"
       ></img>
       <div className={styles.container}>
-        <p className={styles.description}>Банан дуже смачний і ароматний</p>
-        <p className={styles.description}>Банани корисні, банани жовті і довгі!</p>
-        <p className={styles.description}>Ах банани мої банани ммм</p>
-        <button className={styles.buyButton}>Купити</button>
+        <h3 className={styles.name}>{props.name}</h3>
+        <p className={styles.description}>{props.description}.</p>
+        <p className={styles.price}>Ціна - {props.price}$.</p>
+        <button className={styles.buyButton} onClick={() => dispatch(addProductToCart(props.name))}>Купити</button>
       </div>
     </div>
   );

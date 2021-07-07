@@ -1,6 +1,22 @@
-.productsContainer{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+.container{
+    width: 80vw;
+    margin: 0 auto;
+    .productsContainer{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .container{
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        width: 100%;
+    }
 }
