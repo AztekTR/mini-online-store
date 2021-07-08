@@ -16,7 +16,7 @@ export function CartProduct(props) {
     if (productsCart[props.name] < 1) {
       dispatch(deleteProductFromCart(props.name));
     }
-  }, [dispatch ,productsCart, props.name]);
+  }, [dispatch, productsCart, props.name]);
 
   return (
     <div className={styles.productCard}>

@@ -15,6 +15,7 @@ function ReduxCartForm(props) {
           name={"name"}
           placeholder={"Name"}
           component={"input"}
+          required
         />
       </div>
       <div>
@@ -23,6 +24,7 @@ function ReduxCartForm(props) {
           name={"surname"}
           placeholder={"Surname"}
           component={"input"}
+          required
         />
       </div>
       <div>
@@ -31,6 +33,7 @@ function ReduxCartForm(props) {
           name={"adress"}
           placeholder={"Adress"}
           component={"input"}
+          required
         />
       </div>
       <div>
@@ -39,6 +42,7 @@ function ReduxCartForm(props) {
           name={"phone"}
           placeholder={"Phone"}
           component={"input"}
+          required
         />
       </div>
       <button className={styles.button}>Order</button>
