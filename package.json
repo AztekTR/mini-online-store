@@ -1,5 +1,6 @@
 {
   "name": "mini-online-store",
+  "homepage": "https://aztektr.github.io/mini-online-store",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,10 +19,12 @@
     "json-server": "^0.16.3"
   },
   "scripts": {
-    "start": "react-scripts start | json-server -p 4000 data.json",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }

@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { data } from "../json-server/data";
+import { timeout } from "../utils/timeouts";
 
 const initialState = {
   allProducts: [],
@@ -15,10 +17,12 @@ function updateLocalStorage(state) {
 export const fetchProducts = createAsyncThunk(
   "productSlice/fetchProducts",
   async () => {
-    const json = await fetch("http://localhost:4000/products").then(
-      (response) => response.json()
-    );
-    return json;
+    // const json = await fetch("http://localhost:4000/products").then(
+    //   (response) => response.json()
+    // );
+    // return json;
+    await timeout(1500);
+    return data;
   }
 );
 
@@ -35,10 +39,12 @@ export const productSlice = createSlice({
       Object.assign(state.productsInCart, { [action.payload]: 1 });
       updateLocalStorage(state);
     },
+
     deleteProductFromCart: (state, action) => {
       delete state.productsInCart[action.payload];
       updateLocalStorage(state);
     },
+
     incrementProductCounter: (state, action) => {
       Object.assign(state.productsInCart, {
         [action.payload]: state.productsInCart[action.payload] + 1,
@@ -48,6 +54,7 @@ export const productSlice = createSlice({
       ).price;
       updateLocalStorage(state);
     },
+
     decrementProductCounter: (state, action) => {
       Object.assign(state.productsInCart, {
         [action.payload]: state.productsInCart[action.payload] - 1,
@@ -57,6 +64,7 @@ export const productSlice = createSlice({
       ).price;
       updateLocalStorage(state);
     },
+
     clearTotalPrice: (state) => {
       state.totalPrice -= state.totalPrice;
       updateLocalStorage(state);
@@ -64,8 +72,8 @@ export const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      action.payload.forEach((product) => state.allProducts.push(product))
-    })
+      action.payload.forEach((product) => state.allProducts.push(product));
+    });
   },
 });
 
